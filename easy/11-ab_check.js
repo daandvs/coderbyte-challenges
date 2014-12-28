@@ -2,7 +2,7 @@
 // exactly 3 places anywhere in the string at least once.
 
 function ABCheck(str) {
-  var match = str.match(/a...b/);
+  var match = str.match(/[ab]...[ab]/);
   return match ? true : false;
 }
 
