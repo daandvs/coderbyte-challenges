@@ -4,26 +4,18 @@
 function LetterCountI(str) {
 
   var arr = str.split(" "),
-      greatestCount = 0,
+      greatestCount = 1,
       greatestWord = "";
 
   for (var i = 0; i < arr.length; i++) {
     // get rid of punc
-    var tempArr = arr[i].replace(/[^a-zA-Z]/g, "").split("");
+    var letters = arr[i].replace(/[^a-zA-Z]/g, "").split("");
 
-    for (var j = 0; j < tempArr.length; j++) {
-      var count = 0,
-          letter = tempArr[j].toLowerCase();
-
-      for (var k = 0; k !== j && k < tempArr.length; k++) {
-        if(tempArr[k] === letter) {
-          count++;
-        }
-
-        if(count > greatestCount) {
-          greatestCount = count;
-          greatestWord = arr[i];
-        }
+    for (var j = 0; j < letters.length; j++) {
+      var count = arr[i].match(new RegExp(letters[j], "g")).length;
+      if(count > greatestCount) {
+        greatestCount = count;
+        greatestWord = arr[i];
       }
     }
   }
@@ -35,4 +27,4 @@ function LetterCountI(str) {
   return -1;
 }
 
-LetterCountI("Today, is the greatest day ever!");
+LetterCountI("I lied before");
