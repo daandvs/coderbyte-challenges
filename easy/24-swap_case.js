@@ -3,7 +3,7 @@
 
 function SwapCase(str) {
 
-  var newstr = str.replace(/([A-Z])|([a-z])/g, function(match, p1, p2) {
+  var newstr = str.replace(/([A-Z]+)|([a-z]+)/g, function(match, p1, p2) {
     if(p1) {
       return p1.toLowerCase();
     }
