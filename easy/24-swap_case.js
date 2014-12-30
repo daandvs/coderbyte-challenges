@@ -2,7 +2,7 @@
 // letters, numbers and symbols stay the way they are
 
 function SwapCase(str) {
-
+  // * means zero-or-more, and + means one-or-more
   var newstr = str.replace(/([A-Z]+)|([a-z]+)/g, function(match, p1, p2) {
     if(p1) {
       return p1.toLowerCase();
