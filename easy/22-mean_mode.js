@@ -1,3 +1,6 @@
+// take the array of numbers stored in arr and return 1 if the mode equals the mean,
+// 0 if they don't equal each other
+
 function MeanMode(arr) {
 
   var modeCache = {},
@@ -5,7 +8,9 @@ function MeanMode(arr) {
         count: 0,
         value: 0
       },
-      mean = arr[Math.floor(arr.length / 2)];
+      mean = arr.reduce(function(previousValue, currentValue, index, arr) {
+        return previousValue + currentValue;
+      }) / arr.length;
 
   for (var i = 0; i < arr.length; i++) {
     if(!modeCache[arr[i]]) {
@@ -27,4 +32,4 @@ function MeanMode(arr) {
   return 0;
 }
 
-MeanMode([5, 3, 3, 3, 1]);
+MeanMode([4, 4, 4, 6, 2]);
