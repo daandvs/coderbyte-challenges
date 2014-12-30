@@ -2,28 +2,19 @@
 
 function DashInsert(str) {
 
-  var output = "",
-      prevOdd = false,
-      isOdd = false;
+  var output = str[0];
 
-  for (var i = 0; i < str.length; i++) {
+  for (var i = 1; i < str.length; i++) {
 
-    if(Number(str[i]) % 2 !== 0) {
-      isOdd = true;
-    }else {
-      isOdd = false;
-    }
-
-    if(prevOdd && isOdd) {
+    if(Number(str[i-1]) % 2 !== 0 && Number(str[i]) % 2 !== 0) {
       output += "-";
     }
 
     output += str[i];
-    prevOdd = isOdd;
   }
 
   return output;
 
 }
 
-DashInsert("000");
+DashInsert("454793");
