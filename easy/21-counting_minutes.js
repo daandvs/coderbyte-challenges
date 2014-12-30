@@ -18,7 +18,7 @@ function CountingMinutesI(str) {
       m1 = Number(time1[1]),
       m2 = Number(time2[1]);
 
-  if(z1 === z2 && h2 < h1) {
+  if(z1 === z2 && (h2 < h1 || m2 < m1 || (h1 === h2 && m1 === m2))) {
     hours += 24;
   }else if (z1 !== z2) {
     hours += 12;
@@ -30,6 +30,4 @@ function CountingMinutesI(str) {
   return hours*60 + minutes;
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-CountingMinutesI("12:30pm-12:00am");
+CountingMinutesI("1:23am-1:08am");
