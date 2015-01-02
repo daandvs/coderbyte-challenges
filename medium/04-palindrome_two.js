@@ -3,18 +3,8 @@
 // a palindrome
 
 function PalindromeTwo(str) {
-  str = str.replace(/[^a-z]/gi, "").toLowerCase();
-  var arr = str.split("").reverse(),
-      isPalindrome = true
-
-  for (var i = 0; i < arr.length; i++) {
-    if(arr[i] !== str[i]) {
-      isPalindrome = false;
-      break;
-    }
-  }
-
-  return isPalindrome;
+  str = str.toLowerCase().replace(/[^a-z]/g, "");
+  return str.split("").reverse().join("") === str;
 }
 
 PalindromeTwo("A war at Tarawa!");
