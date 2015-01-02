@@ -1,9 +1,16 @@
-function PowersofTwo(num) {
-  var sqrt = Math.floor(Math.sqrt(num));
+// Take the num parameter being passed which will be an integer and return true if it's a power of two
+// return false if not.
 
-  return Math.pow(sqrt, 2) === num;
+function PowersofTwo(num) {
+  while (num % 2 === 0) {
+    num = num / 2;
+  }
+
+  if(num > 1) {
+    return false;
+  }
+
+  return true;
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-PowersofTwo(2);
+PowersofTwo(22);
