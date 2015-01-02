@@ -1,26 +1,22 @@
+// Take the str parameter being passed and return a compressed version of the string using
+// the run-length encoding algorithm. Eg. wwwggopp would return 3w2g1o2p
+
 function RunLength(str) {
-  var count = 1,
-      prev = str[0],
+  var i = 0,
       returnStr = "";
 
-  for (var i = 1; i <= str.length; i++) {
-    var value = str[i];
+  while (i < str.length) {
+    var j = 0;
 
-    if(value !== prev) {
-      returnStr += count + prev;
-      count = 1;
-    }else {
-      count++;
+    while (str[i] === str[i+j] && (i+j) < str.length) {
+      j++;
     }
 
-    prev = value;
+    returnStr += j + str[i];
+    i = i + j;
   }
 
-  // code goes here
   return returnStr;
-
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-RunLength("aabbcde");
+RunLength("wwwbbbw");
