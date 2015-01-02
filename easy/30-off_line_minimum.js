@@ -5,39 +5,20 @@
 // means take out the smallest integer currently in the whole set.
 
 function OffLineMinimum(strArr) {
-  var indexes = [],
-      output = [];
+  var output = [],
+      collection = [];
 
-  for (var i = 0; i < strArr.length; i++) {
-    if(strArr[i] === "E") {
-      var temp = strArr.slice(0, i),
-          min = null,
-          currentIndex = null;
-
-      temp.forEach(function(elem, index, arr) {
-        var value = Number(elem),
-            used = indexes.indexOf(index) !== -1;
-
-        if(elem !== "E") {
-          if(!min && !used) {
-            min = value;
-            currentIndex = index;
-          } else if(!used && Number(elem) < min) {
-            min = value;
-            currentIndex = index;
-          }
-        }
-      });
-
-      if(min !== null) {
-        output.push(min);
-        indexes.push(currentIndex);
-      }
+  strArr.forEach(function(elem, index, arr) {
+    if(isNaN(elem)) {
+      output.push(collection.sort(function(a, b) {
+        return a < b;
+      }).pop());
+    }else {
+      collection.push(elem);
     }
+  });
 
-  }
-
-  return output;
+  return output.join(",");
 
 }
 
