@@ -1,43 +1,34 @@
+// Take the array of numbers stored in arr and return the string true if any combination
+// of numbers in the array can be added up to equal the largest number in the array, otherwise return false
+
 function ArrayAddition(arr) {
   arr.sort(function(a, b) {
-    return a - b;
+    return a- b;
   });
 
-  var loopCount = 0;
+  var greatest = arr.pop();
 
-  var greatest = arr[arr.length-1];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i+1; j < arr.length; j++) {
+      var sum = arr[i] + arr[j],
+          k = j - i;
 
-  for (var i = 0; i < arr.length-1; i++) {
-    loopCount++;
-
-    var newArr = arr.slice(i, arr.length-1),
-        values = [];
-
-    for (var j = i; j < newArr.length; j++) {
-      loopCount++;
-      var sum = arr[i] + arr[j];
       if(sum === greatest) {
-        console.log(loopCount);
         return true;
       }
 
-      for (var k = 0; k < values.length; k++) {
-        loopCount++;
-        sum += values[k];
+      while (k > 1) {
+        k--;
+        sum += arr[k];
 
         if(sum === greatest) {
-          console.log(loopCount);
           return true;
         }
       }
-
-      values.push(arr[j+1]);
     }
   }
 
   return false;
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-ArrayAdditionI([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 40]);
+ArrayAddition([5,7,16,1,2]);
