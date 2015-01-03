@@ -1,38 +1,34 @@
+// Take the array of numbers stored in arr and return the string "Arithmetic" if the sequence follows an arithmetic pattern
+// Return "Geometric" if it follows a geometric pattern. If it doesn't follow either pattern, return -1
+
 function ArithGeoII(arr) {
 
-  // arith
-  var diff = arr[1] - arr[0],
-      arith = true;
+  var isArith = true,
+      arithDiff = arr[1] - arr[0],
+      isGeo = true,
+      geoDiff = arr[1] / arr[0];
+
   for (var i = 2; i < arr.length; i++) {
-    if(arr[i] - arr[i-1] !== diff) {
-      arith = false;
+    if(isArith) {
+      isArith = arr[i] - arr[i-1] === arithDiff;
+    }
+
+    if(isGeo) {
+      isGeo = arr[i] % geoDiff === 0;
+    }
+
+    if(!isArith && !isGeo) {
       break;
     }
   }
 
-  if(arith) {
+  if(isArith) {
     return "Arithmetic";
-  }
-
-  // geo
-  diff = arr[1] / arr[0];
-  var geo = true;
-  for (var i = 2; i < arr.length; i++) {
-    if(arr[i] % diff !== 0) {
-      geo = false;
-      break;
-    }
-  }
-
-  if(geo) {
+  }else if(isGeo) {
     return "Geometric";
   }
 
-
   return -1;
-
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-ArithGeoII([2, 6, 18, 54]);
+ArithGeoII([1, 2, 3, 100]);
