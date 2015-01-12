@@ -1,3 +1,5 @@
+// take the array of numbers stored in arr and return the number that appears most frequently (the mode)
+
 function SimpleMode(arr) {
   var mode = -1,
       modeCount = 0;
@@ -21,6 +23,4 @@ function SimpleMode(arr) {
   return mode;
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
 SimpleMode([3,4,1,6,10]);
