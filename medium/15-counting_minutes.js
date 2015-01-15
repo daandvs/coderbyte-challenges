@@ -8,13 +8,14 @@ function CountingMinutes(str) {
 		output = ((Number(arr[4]) - Number(arr[1])) * 60) + (Number(arr[5]) - Number(
 			arr[2]));
 
-	if (arr[3] > arr[6] || arr[3] < arr[6]) {
-		output = (12 * 60) + output;
-	} else {
-		output = (24 * 60) + output;
+	if (arr[3] !== arr[6]) {
+		output += (12 * 60);
+	} else if ((arr[1] === arr[4] && arr[2] === arr[5]) || arr[4] < arr[1] || arr[
+			5] < arr[2]) {
+		output += (24 * 60);
 	}
 
 	return output;
 }
 
-CountingMinutes("1:00am-1:00pm");
+CountingMinutes("5:00pm-5:11pm");
