@@ -1,7 +1,11 @@
+// take the num parameter being passed and return the next number greater than
+// num using the same digits
+
 function PermutationStep(num) {
 	var arr = num.toString().split(""),
+		max = 0,
 		loop = true,
-		i = arr.length - 1;
+		n = i = arr.length - 1;
 
 	function swap(arr, i1, i2) {
 		var temp = arr[i1];
@@ -11,15 +15,22 @@ function PermutationStep(num) {
 
 	while (loop && i > 0) {
 		if (Number(arr[i - 1]) < Number(arr[i])) {
+			max = i;
 			loop = false;
 
 			swap(arr, i - 1, i);
 
-			for (var j = i, n = arr.length - 1; j < n; j++) {
-				if (arr[j] > arr[j + 1]) {
-					swap(arr, j, j + 1);
+			do {
+				while (arr[i] > arr[i + 1]) {
+					for (var j = i; j < n; j++) {
+						if (arr[j] > arr[j + 1]) {
+							swap(arr, j, j + 1);
+						}
+					}
 				}
-			}
+
+				i++;
+			} while (i < n);
 		}
 
 		i--;
@@ -32,4 +43,4 @@ function PermutationStep(num) {
 	return Number(arr.join(""));
 }
 
-PermutationStep(9999);
+PermutationStep(12453);
