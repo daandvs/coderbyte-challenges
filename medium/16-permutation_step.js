@@ -1,38 +1,35 @@
 function PermutationStep(num) {
 	var arr = num.toString().split(""),
-		combinations = [],
-		smallest = -1;
+		loop = true,
+		i = arr.length - 1;
 
-	function swap(arr, index1, index2) {
-		var temp = arr[index1];
-		arr[index1] = arr[index2];
-		arr[index2] = temp;
-
-		return arr;
+	function swap(arr, i1, i2) {
+		var temp = arr[i1];
+		arr[i1] = arr[i2];
+		arr[i2] = temp;
 	}
 
-	for (var i = 0, n = arr.length; i < n; i++) {
-		for (var j = i + 1; j < n; j++) {
-			combinations.push(Number(swap(arr.slice(), i, j).join("")));
+	while (loop && i > 0) {
+		if (Number(arr[i - 1]) < Number(arr[i])) {
+			loop = false;
+
+			swap(arr, i - 1, i);
+
+			for (var j = i, n = arr.length - 1; j < n; j++) {
+				if (arr[j] > arr[j + 1]) {
+					swap(arr, j, j + 1);
+				}
+			}
 		}
+
+		i--;
 	}
 
-	combinations.sort(function(a, b) {
-		return a > b;
-	});
+	if (loop) {
+		return -1;
+	}
 
-	combinations.some(function(val, index) {
-		if (val > num) {
-			smallest = val;
-			return true;
-		}
-
-		return false;
-	});
-
-	return smallest;
+	return Number(arr.join(""));
 }
 
-// keep this function call here
-// to see how to enter arguments in JavaScript scroll down
-PermutationStep(12453);
+PermutationStep(9999);
